@@ -1,0 +1,9 @@
+@import "settings/reset";
+@import "settings/fonts";
+@import "settings/colors.scss";
+@import "header";
+
+body {
+  font-family: $font-base;
+  overflow-y: hidden;
+}

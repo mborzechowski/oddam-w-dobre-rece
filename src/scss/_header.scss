@@ -1,0 +1,80 @@
+.container{
+  width: 119rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.hero_img {
+  position: absolute;
+  top: 0;
+  left: -30rem;
+  width: 85.5rem;
+  height: 60rem;
+}
+
+.header_top{
+  display: flex;
+  justify-content: end;
+  flex-direction: column;
+  margin:2.3rem 8.87rem 0 0;
+  gap: 1rem;
+
+}
+
+.header_buttons{
+  display: flex;
+  justify-content: end;
+  gap: 1.87rem;
+}
+
+.header_nav{
+  display: flex;
+  justify-content: end;
+  gap: 2.18rem ;
+  color: $color-text-darker;
+}
+
+.header_single_button{
+  border:none;
+  background: none;
+  color: $color-text-light;
+  font-size: 0.81rem;
+  font-family: $font-base;
+  padding: 9px 10px;
+  border: 0.75px white solid;
+  &:hover{
+    border: 0.75px $color-main solid;
+  }
+}
+
+.header_nav_button{
+  padding: 9px 20px;
+  box-sizing: border-box;
+  border: 0.75px white solid;
+  &:hover {
+    border: 0.75px black solid;
+    cursor: pointer;
+  }
+}
+
+.homepage_center{
+  display: flex;
+  margin: 13.12rem 19rem 0 0;
+  width: 44rem;
+  align-self: end;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  &_decoration{
+    width: 15.81rem;
+    height: 2.06rem;
+  }
+  &_buttons{
+    display: flex;
+  }
+  &_title{
+    font-size: 2.37rem;
+  }
+}
