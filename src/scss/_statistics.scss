@@ -1,0 +1,41 @@
+.statistics{
+  height: 24rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 17.87rem;
+  background: url("../assets/3 Columns Background.png");
+  &_item, &_item_last, &_item_first{
+    margin:2.86rem 0 5.38rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &_item_first{
+    margin-left: 10.19rem;
+  }
+  &_item_last{
+    margin-right: 10.19rem;
+  }
+  &_number{
+    color: $color-text-medium;
+    font-size:5.63rem;
+    line-height: 7.62rem ;
+    font-weight: lighter;
+  }
+  &_title{
+    color: $color-text-darker;
+    font-size: 1.13rem ;
+    line-height: 1.88rem;
+  }
+  &_text{
+    font-weight: lighter;
+    text-align: center;
+    letter-spacing: -0.32px;
+    color: $color-text-darker;
+    width: 20.88rem;
+    height: 4.25rem;
+    margin-top: 1.75rem;
+  }
+
+}

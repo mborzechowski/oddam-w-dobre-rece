@@ -2,11 +2,11 @@ import homeHeroImage from '../assets/Home-Hero-Image.jpg'
 import decoration from '../assets/Decoration.svg'
 import { Link } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
-export default function MainPage(){
+export default function MainSection(){
 
     return (
         <>
-        <div className='container'>
+        <div className='container main_section'>
             <div><img src={homeHeroImage} alt="things to give away" className='hero_img'/></div>
             <div className='header_top'>
                 <div className='header_buttons'>
