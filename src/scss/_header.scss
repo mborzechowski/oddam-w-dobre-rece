@@ -37,7 +37,7 @@
 }
 
 .header_single_button{
-  border:none;
+  text-decoration: none;
   background: none;
   color: $color-text-light;
   font-size: 0.81rem;
@@ -54,7 +54,7 @@
   box-sizing: border-box;
   border: 0.75px white solid;
   &:hover {
-    border: 0.75px black solid;
+    border: 0.75px $color-text-darker solid;
     cursor: pointer;
   }
 }
@@ -70,11 +70,38 @@
   &_decoration{
     width: 15.81rem;
     height: 2.06rem;
+    margin-top: 1.56rem;
   }
   &_buttons{
     display: flex;
   }
   &_title{
     font-size: 2.37rem;
+    letter-spacing: -0.76x;
+    line-height: 3.44rem;
+  }
+}
+
+.homepage_center_buttons{
+
+  &_one, &_two{
+    border: solid 0.75px $color-text-darker;
+    font-size: 2.25rem;
+    font-weight: lighter;
+    text-align: center;
+    line-height: 2.81rem;
+    margin-top: 4.06rem;
+    text-decoration: none;
+    color: $color-text-darker;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+  &_one{
+    padding: 0.81rem 5.81rem;
+    margin-right: 2.75rem;
+  }
+  &_two{
+    padding: 0.81rem 3.19rem;
   }
 }

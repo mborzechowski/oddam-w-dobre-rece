@@ -1,7 +1,7 @@
-import Header from './Header.jsx'
+import MainPage from './MainPage.jsx'
 export default function Home (){
 
     return (
-        <Header/>
+        <MainPage/>
     )
 }
