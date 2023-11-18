@@ -1,5 +1,6 @@
 import decoration from "../assets/Decoration.svg";
 import {Link} from "react-router-dom";
+import { Link as  Element } from 'react-scroll';
 import shirtIcon from '../assets/Icon-1.svg';
 import bagIcon from '../assets/Icon-2.svg';
 import  mgGlassIcon from '../assets/Icon-3.svg';
@@ -9,6 +10,7 @@ import pickUpIcon from '../assets/Icon-4.svg';
 export default function Explanation(){
 
 return (
+    <Element name='o-co-chodzi'>
     <div className='container explanation'>
         <h2 className='explanation_title'>Wystarczą 4 proste kroki</h2>
         <img src={decoration} alt="decoration" className='explanation_decoration'/>
@@ -20,5 +22,6 @@ return (
         </div>
         <Link to='/login' className='homepage_center_buttons_one'>ODDAJ <br/>RZECZY</Link>
     </div>
+    </Element>
 )
 }

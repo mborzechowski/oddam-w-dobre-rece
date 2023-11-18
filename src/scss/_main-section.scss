@@ -10,9 +10,13 @@
 }
 
 .hero_img {
-  width: 85.5rem;
-  height: 60rem;
-
+  width: 56rem;
+  height: 60.19rem;
+  overflow: hidden;
+  max-width: 100%;
+  img{
+    transform: translate(-30rem);
+  }
 }
 
 .header_top{
