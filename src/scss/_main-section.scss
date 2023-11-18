@@ -1,19 +1,15 @@
 .container{
   width: 119rem;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
 }
 
 .main_section{
-  margin-bottom: 17.4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
 }
 
 .hero_img {
-  position: absolute;
-  top: 0;
-  left: -30rem;
   width: 85.5rem;
   height: 60rem;
 

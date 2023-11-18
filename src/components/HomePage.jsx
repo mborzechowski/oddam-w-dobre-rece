@@ -1,11 +1,14 @@
 import MainSection from './MainSection.jsx'
 import Statistics from './Statistics.jsx'
-export default function HomePage (){
+import Explanation from "./Explanation.jsx";
+
+export default function HomePage() {
 
     return (
-        <>
-        <MainSection/>
-        <Statistics/>
-        </>
+        <div className='home_page'>
+            <MainSection/>
+            <Statistics/>
+            <Explanation/>
+        </div>
     )
 }

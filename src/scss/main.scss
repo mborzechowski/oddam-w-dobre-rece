@@ -3,8 +3,16 @@
 @import "settings/colors.scss";
 @import "main-section";
 @import "statistics";
+@import "explanation";
 
 body {
   font-family: $font-base;
   overflow-x: hidden;
+}
+
+.home_page{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
