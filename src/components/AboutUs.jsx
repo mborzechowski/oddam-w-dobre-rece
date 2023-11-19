@@ -1,11 +1,10 @@
 import decoration from "../assets/Decoration.svg";
 import signature from '../assets/Signature.svg';
 import peopleImg from '../assets/People.jpg';
-import { Link as  Element } from 'react-scroll';
+
 
 export default function AboutUs(){
     return(
-        <Element name='o-nas'>
         <div className='container about_us'>
             <div className='about_us_text_section'>
                 <h2 className='about_us_title'>O nas</h2>
@@ -17,6 +16,5 @@ export default function AboutUs(){
                 <img src={peopleImg} alt="people smilling"/>
             </div>
         </div>
-        </Element>
     )
 }

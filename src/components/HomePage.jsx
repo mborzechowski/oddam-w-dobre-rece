@@ -3,16 +3,17 @@ import Statistics from './Statistics.jsx'
 import Explanation from './Explanation.jsx';
 import AboutUs from './AboutUs.jsx'
 import Contact from "./Contact.jsx";
+import {Element} from 'react-scroll';
 
 export default function HomePage() {
 
     return (
         <div className='home_page'>
-            <MainSection/>
+            <Element name="start"><MainSection/></Element>
             <Statistics/>
-            <Explanation/>
-            <AboutUs/>
-            <Contact/>
+            <Element name="o-co-chodzi"><Explanation/></Element>
+            <Element name="o-nas"><AboutUs/></Element>
+            <Element name="kontakt"><Contact/></Element>
         </div>
     )
 }
