@@ -15,7 +15,7 @@ export default function MainSection() {
                             <Link to='/logowanie' className='header_single_button'>
                                 Zaloguj
                             </Link>
-                            <Link to='/register' className='header_single_button'>
+                            <Link to='/rejestracja' className='header_single_button'>
                                 Załóż konto
                             </Link>
                         </div>
