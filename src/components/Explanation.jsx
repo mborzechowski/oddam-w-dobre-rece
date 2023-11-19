@@ -9,7 +9,7 @@ import pickUpIcon from '../assets/Icon-4.svg';
 export default function Explanation(){
 
 return (
-    <div className='container explanation'>
+    <div className='container explanation' id="explanation">
         <h2 className='explanation_title'>Wystarczą 4 proste kroki</h2>
         <img src={decoration} alt="decoration" className='explanation_decoration'/>
         <div className='explanation_items'>

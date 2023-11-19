@@ -12,7 +12,7 @@ export default function MainSection() {
                 <div>
                     <div className='header_top'>
                         <div className='header_buttons'>
-                            <Link to='/login' className='header_single_button'>
+                            <Link to='/logowanie' className='header_single_button'>
                                 Zaloguj
                             </Link>
                             <Link to='/register' className='header_single_button'>
