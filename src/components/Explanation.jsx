@@ -18,7 +18,7 @@ return (
             <div className='explanation_single_item'><img src={mgGlassIcon} alt="Magnifying Glass" className='explanation_single_item_img'/><p className='explanation_single_item_title'>Zdecyduj komu chcesz pomóc</p><p className='explanation_single_item_decoration'></p><p className='explanation_single_item_text'>wybierz zaufane miejsce</p></div>
             <div className='explanation_single_item'><img src={pickUpIcon} alt="Recycle Icon" className='explanation_single_item_img'/><p className='explanation_single_item_title'>Zamów kuriera</p><p className='explanation_single_item_decoration'></p><p className='explanation_single_item_text'>kurier przyjedzie w dogodnym terminie</p></div>
         </div>
-        <Link to='/login' className='homepage_center_buttons_one'>ODDAJ <br/>RZECZY</Link>
+        <Link to='/logowanie' className='homepage_center_buttons_one'>ODDAJ <br/>RZECZY</Link>
     </div>
 )
 }

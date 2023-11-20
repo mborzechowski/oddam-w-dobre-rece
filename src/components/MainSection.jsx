@@ -42,8 +42,8 @@ export default function MainSection() {
                         <h1 className='homepage_center_title'>Oddaj niechciane rzeczy w zaufane ręce</h1>
                         <img src={decoration} alt="decoration" className='homepage_center_decoration'/>
                         <div className='homepage_center_buttons'>
-                            <Link to='/login' className='homepage_center_buttons_one'>ODDAJ <br/>RZECZY</Link>
-                            <Link to='/login' className='homepage_center_buttons_two'>ZORGANIZUJ <br/> ZBIÓRKĘ</Link>
+                            <Link to='/logowanie' className='homepage_center_buttons_one'>ODDAJ <br/>RZECZY</Link>
+                            <Link to='/logowanie' className='homepage_center_buttons_two'>ZORGANIZUJ <br/> ZBIÓRKĘ</Link>
                         </div>
                     </div>
                 </div>

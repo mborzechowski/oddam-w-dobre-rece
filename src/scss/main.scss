@@ -1,13 +1,15 @@
 @import "settings/reset";
 @import "settings/fonts";
-@import "settings/colors.scss";
+@import "settings/colors";
 @import "main-section";
 @import "statistics";
 @import "explanation";
 @import "about";
 @import "contact";
-@import "_login.scss";
+@import "login";
 @import "register";
+@import "logout";
+@import "_organizations.scss";
 
 body {
   font-family: $font-base;
