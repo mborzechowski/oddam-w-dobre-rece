@@ -21,7 +21,7 @@ export default function Login() {
                             <div className='header_nav_button'>Start</div>
                         </Link>
                         <Link to='/' className="login_link">
-                            <div className='header_nav_button'>O co chodzi?</div>
+                            <div className='header_nav_button' >O co chodzi?</div>
                         </Link>
                         <Link to='/' className="login_link" >
                             <div className='header_nav_button'>O nas</div>
@@ -32,6 +32,7 @@ export default function Login() {
                         <Link to='/' className="login_link">
                             <div className='header_nav_button'>Kontakt</div>
                         </Link>
+
                     </nav>
                 </div>
                 <div className='login_center_box'>
