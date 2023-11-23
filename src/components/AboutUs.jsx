@@ -4,7 +4,7 @@ import peopleImg from '../assets/People.jpg';
 
 export default function AboutUs(){
     return(
-        <div className='container about_us'  >
+        <div className='container about_us' >
             <div className='about_us_text_section'>
                 <h2 className='about_us_title'>O nas</h2>
                 <img src={decoration} alt="decoration" className='about_us_decoration'/>

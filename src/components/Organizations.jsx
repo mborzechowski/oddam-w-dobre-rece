@@ -27,18 +27,19 @@ export default function Organizations() {
         ],
     };
 
-    const ListaOrganizacji = ({ kategoria }) => {
+    const ListOfOrganizations = ({ category }) => {
         const [currentPage, setCurrentPage] = useState(1);
         const itemsPerPage = 3;
 
-        const totalItems = data[kategoria].length;
+        const totalItems = data[category].length;
         const totalPages = Math.ceil(totalItems / itemsPerPage);
 
-        const paginatedData = data[kategoria].slice(
+        const paginatedData = data[category].slice(
             (currentPage - 1) * itemsPerPage,
             currentPage * itemsPerPage
         );
 
+        const numberOfPages = Array.from({length: totalPages}, (_,index) => index + 1);
         const changePage = (pageNumber) => {
             setCurrentPage(pageNumber);
         };
@@ -50,6 +51,7 @@ export default function Organizations() {
                 {selectedCategory === 'organizacje' && 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.'}
                 {selectedCategory === 'lokalneZbiorki' && 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.'}
             </div>
+                <div>
                 {paginatedData.map((item) =>(
                     <div key={item.id} className='organizations_list_item'>
                         <div>
@@ -62,6 +64,14 @@ export default function Organizations() {
 
                     </div>
                 ))}
+                </div>
+                <div className='organizations_list_pagination'>
+                {totalPages > 1 && numberOfPages.map((pageNumber) =>(
+                    <div key={pageNumber} className='organizations_list_page' onClick={()=>changePage(pageNumber)}>
+                        {pageNumber}
+                    </div>
+                ))}
+                </div>
             </>
         )
     }
@@ -77,7 +87,7 @@ export default function Organizations() {
                     <div className="organizations_header_buttons_single" onClick={() => setSelectedCategory('organizacje')}>Organizacjom pozarządowym</div>
                     <div className="organizations_header_buttons_single" onClick={() => setSelectedCategory('lokalneZbiorki')}>Lokalnym zbiórkom</div>
                 </div>
-                <ListaOrganizacji kategoria={selectedCategory}/>
+                <ListOfOrganizations category={selectedCategory}/>
             </div>
         </div>
     )

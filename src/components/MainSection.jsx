@@ -5,6 +5,7 @@ import { Link as ScrollLink} from 'react-scroll';
 
 export default function MainSection() {
 
+
     return (
         <>
             <div className='container main_section'>

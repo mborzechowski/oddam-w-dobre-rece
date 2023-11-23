@@ -8,12 +8,13 @@ import {Element} from 'react-scroll';
 
 export default function HomePage() {
 
+
     return (
         <div className='home_page'>
             <Element name="start"><MainSection/></Element>
             <Statistics/>
             <Element name="o-co-chodzi"><Explanation/></Element>
-            <Element name="o-nas" id="o-nas"><AboutUs id="o-nas"/></Element>
+            <Element name="o-nas"><AboutUs/></Element>
             <Element name="fundacje"><Organizations/></Element>
             <Element name="kontakt"><Contact/></Element>
         </div>
