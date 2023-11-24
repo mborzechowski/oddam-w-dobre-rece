@@ -1,31 +1,57 @@
 import decoration from "../assets/Decoration.svg";
 import supabase from "../services/supabase.js";
-import {useState} from "react";
+import {useState,useEffect} from "react";
+
 
 export default function Organizations() {
     const [selectedCategory, setSelectedCategory] = useState('fundacje');
+    const [data, setData] = useState({
+        fundacje: [],
+        organizacje: [],
+        lokalneZbiorki: [],
+    });
 
-    const data = {
-        fundacje: [
-            { id: 1, nazwa: 'Fundacja 1', opis: 'Opis fundacji 1', cechy: 'Egestas, sed, tempus'},
-            { id: 2, nazwa: 'Fundacja 2', opis: 'Opis fundacji 2', cechy: 'Egestas, sed, tempus' },
-            { id: 3, nazwa: 'Fundacja 3', opis: 'Opis fundacji 3', cechy: 'Egestas, sed, tempus' },
-            { id: 4, nazwa: 'Fundacja 4', opis: 'Opis fundacji 4', cechy: 'Egestas, sed, tempus' },
-            { id: 5, nazwa: 'Fundacja 5', opis: 'Opis fundacji 5', cechy: 'Egestas, sed, tempus' },
-            { id: 6, nazwa: 'Fundacja 6', opis: 'Opis fundacji 6', cechy: 'Egestas, sed, tempus' },
-            { id: 7, nazwa: 'Fundacja 7', opis: 'Opis fundacji 7', cechy: 'Egestas, sed, tempus' },
-            { id: 8, nazwa: 'Fundacja 8', opis: 'Opis fundacji 8', cechy: 'Egestas, sed, tempus'},
-        ],
-        organizacje: [
-            { id: 9, nazwa: 'Organizacja 1', opis: 'Opis organizacji 1', cechy: 'Egestas, sed, tempus' },
-            { id: 10, nazwa: 'Organizacja 2', opis: 'Opis organizacji 2', cechy: 'Egestas, sed, tempus' },
-        ],
-        lokalneZbiorki: [
-            { id: 11, nazwa: 'Lokalna zbiórka 1', opis: 'Opis lokalnej zbiórki 1', cechy: 'Egestas, sed, tempus' },
-            { id: 12, nazwa: 'Lokalna zbiórka 2', opis: 'Opis lokalnej zbiórki 2', cechy: 'Egestas, sed, tempus' },
-            { id: 13, nazwa: 'Lokalna zbiórka 3', opis: 'Opis lokalnej zbiórki 3', cechy: 'Egestas, sed, tempus' },
-        ],
-    };
+    const getData = async () => {
+        try {
+            const {data,error} = await supabase.from('fundacje').select('*');
+            if (error) {
+                console.log(error)
+                throw error;
+            }
+            data && setData(prevState => ({...prevState, fundacje:data}));
+
+        } catch (error){
+            console.error('Something went wrong', error);
+        }
+        try {
+            const {data,error} = await supabase.from('organizacje').select('*');
+            if (error) {
+                console.log(error)
+                throw error;
+            }
+            data && setData(prevState => ({...prevState, organizacje:data}));
+
+        } catch (error){
+            console.error('Something went wrong', error);
+        }
+
+        try {
+            const {data,error} = await supabase.from('zbiorki').select('*');
+            if (error) {
+                console.log(error)
+                throw error;
+            }
+            data && setData(prevState => ({...prevState, lokalneZbiorki:data}));
+
+        } catch (error){
+            console.error('Something went wrong', error);
+        }
+    }
+
+    useEffect(()=>{
+        getData()
+    },[])
+
 
     const ListOfOrganizations = ({ category }) => {
         const [currentPage, setCurrentPage] = useState(1);
@@ -76,7 +102,7 @@ export default function Organizations() {
         )
     }
 
-
+    console.log(data)
     return (
         <div className="container organizations">
             <div className="organizations_header">
