@@ -18,7 +18,11 @@
     transform: translate(-30rem);
   }
 }
-
+.header_greeting{
+  align-self: center;
+  color: black;
+  font-size: 0.81rem;
+}
 .header_top{
   display: flex;
   justify-content: end;
@@ -37,7 +41,7 @@
 .header_nav{
   display: flex;
   justify-content: end;
-  gap: 2.18rem ;
+  gap: 2rem ;
   color: $color-text-darker;
 }
 
@@ -51,6 +55,7 @@
   border: 0.75px white solid;
   &:hover{
     border: 0.75px $color-main solid;
+    color: black;
   }
 }
 
@@ -84,6 +89,7 @@
     font-size: 2.37rem;
     letter-spacing: -0.76x;
     line-height: 3.44rem;
+    text-align: center;
   }
 }
 

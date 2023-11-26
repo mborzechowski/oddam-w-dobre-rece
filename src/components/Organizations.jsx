@@ -102,7 +102,7 @@ export default function Organizations() {
         )
     }
 
-    console.log(data)
+
     return (
         <div className="container organizations">
             <div className="organizations_header">
