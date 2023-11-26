@@ -4,10 +4,10 @@ import shirtIcon from '../assets/Icon-1.svg';
 import bagIcon from '../assets/Icon-2.svg';
 import  mgGlassIcon from '../assets/Icon-3.svg';
 import pickUpIcon from '../assets/Icon-4.svg';
-
+import {useAuth} from "../services/AuthContext.jsx";
 
 export default function Explanation(){
-
+    const {user} = useAuth();
 return (
     <div className='container explanation' id="explanation">
         <h2 className='explanation_title'>Wystarczą 4 proste kroki</h2>
@@ -18,7 +18,8 @@ return (
             <div className='explanation_single_item'><img src={mgGlassIcon} alt="Magnifying Glass" className='explanation_single_item_img'/><p className='explanation_single_item_title'>Zdecyduj komu chcesz pomóc</p><p className='explanation_single_item_decoration'></p><p className='explanation_single_item_text'>wybierz zaufane miejsce</p></div>
             <div className='explanation_single_item'><img src={pickUpIcon} alt="Recycle Icon" className='explanation_single_item_img'/><p className='explanation_single_item_title'>Zamów kuriera</p><p className='explanation_single_item_decoration'></p><p className='explanation_single_item_text'>kurier przyjedzie w dogodnym terminie</p></div>
         </div>
-        <Link to='/logowanie' className='homepage_center_buttons_one'>ODDAJ <br/>RZECZY</Link>
+        <Link to={user ? '/oddaj-rzeczy' : '/logowanie'} className='homepage_center_buttons_one'>ODDAJ <br/>RZECZY</Link>
+
     </div>
 )
 }

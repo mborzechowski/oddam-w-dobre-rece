@@ -33,12 +33,7 @@ export default function Login() {
 
         if (!error) {
             const { data: { user } } = await supabase.auth.getUser()
-            console.log('user logged successfully');
-            console.log(data);
-            console.log("Login:",user);
-
             localStorage.setItem('jwtToken', data.session.access_token);
-
             login(user);
             navigation('/');
             return;
@@ -47,7 +42,9 @@ export default function Login() {
         console.error('something went wrong', error);
     }
 
-
+    const setPath = (path) =>{
+        localStorage.setItem('path', path)
+    }
 
     return (
         <>
@@ -65,16 +62,16 @@ export default function Login() {
                         <Link to='/' className="login_link">
                             <div className='header_nav_button'>Start</div>
                         </Link>
-                        <Link to='/' className="login_link">
+                        <Link to='/' onClick={ () => setPath('o-co-chodzi')} className="login_link">
                             <div className='header_nav_button' >O co chodzi?</div>
                         </Link>
-                        <Link to='/' className="login_link" >
+                        <Link to='/' onClick={ () => setPath('o-nas')} className="login_link" >
                             <div className='header_nav_button'>O nas</div>
                         </Link>
-                        <Link to='/' className="login_link">
+                        <Link to='/' onClick={ () => setPath('fundacje')} className="login_link">
                             <div className='header_nav_button'>Fundacja i Organizacje</div>
                         </Link>
-                        <Link to='/' className="login_link">
+                        <Link to='/' onClick={ () => setPath('kontakt')} className="login_link">
                             <div className='header_nav_button'>Kontakt</div>
                         </Link>
 

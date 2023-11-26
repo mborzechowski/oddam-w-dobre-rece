@@ -30,6 +30,10 @@ export default function FormPage(){
         checkUserSession();
     }, []);
 
+    const setPath = (path) =>{
+        localStorage.setItem('path', path)
+    }
+
     return (
         <>
             <div className='container form_page'>
@@ -49,16 +53,16 @@ export default function FormPage(){
                             <Link to='/' className="login_link">
                                 <div className='header_nav_button'>Start</div>
                             </Link>
-                            <Link to='/' className="login_link">
+                            <Link to='/' onClick={ () => setPath('o-co-chodzi')} className="login_link">
                                 <div className='header_nav_button' >O co chodzi?</div>
                             </Link>
-                            <Link to='/' className="login_link" >
+                            <Link to='/' onClick={ () => setPath('o-nas')} className="login_link" >
                                 <div className='header_nav_button'>O nas</div>
                             </Link>
-                            <Link to='/' className="login_link">
+                            <Link to='/' onClick={ () => setPath('fundacje')} className="login_link">
                                 <div className='header_nav_button'>Fundacja i Organizacje</div>
                             </Link>
-                            <Link to='/' className="login_link">
+                            <Link to='/' onClick={ () => setPath('kontakt')} className="login_link">
                                 <div className='header_nav_button'>Kontakt</div>
                             </Link>
                         </nav>

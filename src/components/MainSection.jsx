@@ -1,7 +1,7 @@
 import homeHeroImage from '../assets/Home-Hero-Image.jpg'
 import decoration from '../assets/Decoration.svg'
 import {Link} from 'react-router-dom';
-import { Link as ScrollLink} from 'react-scroll';
+import { Link as ScrollLink, scroller } from 'react-scroll';
 import {useEffect, useState} from "react";
 import supabase from "../services/supabase.js";
 import {useAuth} from "../services/AuthContext.jsx";
@@ -9,6 +9,8 @@ import {useAuth} from "../services/AuthContext.jsx";
 export default function MainSection() {
     const {user, logout, login} = useAuth();
     const [email, setEmail] = useState('')
+    const scrollPath = localStorage.getItem('path')
+
 
     useEffect(() => {
         const checkUserSession = async () => {
@@ -26,6 +28,18 @@ export default function MainSection() {
 
         checkUserSession();
     }, [login]);
+
+    useEffect(()=>{
+        if (scrollPath) {
+            scroller.scrollTo(scrollPath, {
+                duration: 800,
+                delay: 0,
+                smooth: 'easeInOutQuart'
+            })
+            localStorage.setItem('path', null)
+        }
+    },[])
+
 
     return (
         <>
@@ -72,14 +86,10 @@ export default function MainSection() {
                         <h1 className='homepage_center_title'>Zacznij pomagać!<br/>
                         Oddaj niechciane rzeczy w zaufane ręce</h1>
                         <img src={decoration} alt="decoration" className='homepage_center_decoration'/>
-                        {!user && <div className='homepage_center_buttons'>
-                            <Link to='/logowanie' className='homepage_center_buttons_one'>ODDAJ <br/>RZECZY</Link>
-                            <Link to='/logowanie' className='homepage_center_buttons_two'>ZORGANIZUJ <br/> ZBIÓRKĘ</Link>
-                        </div>}
-                        {user && <div className='homepage_center_buttons'>
-                            <Link to='/oddaj-rzeczy' className='homepage_center_buttons_one'>ODDAJ <br/>RZECZY</Link>
-                            <Link to='/zorganizuj-zbiorke' className='homepage_center_buttons_two'>ZORGANIZUJ <br/> ZBIÓRKĘ</Link>
-                        </div> }
+                        <div className='homepage_center_buttons'>
+                            <Link to={user ? '/oddaj-rzeczy' : '/logowanie'} className='homepage_center_buttons_one'>ODDAJ <br/>RZECZY</Link>
+                            <Link to={user ? '/zorganizuj-zbiorke' : '/logowanie'} className='homepage_center_buttons_two'>ZORGANIZUJ <br/> ZBIÓRKĘ</Link>
+                        </div>
                     </div>
                 </div>
             </div>
