@@ -1,0 +1,89 @@
+.inquiry {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+
+  &_header {
+    height: 11.19rem;
+    background-color: #FAD648;
+
+    &_title {
+      font-size: 2.25rem;
+      font-weight: bold;
+      margin: 3.12rem 0 0 8.88rem;
+      width: 8.375rem;
+      height: 3.06rem;
+    }
+
+    &_text {
+      margin-left: 8.88rem;
+      font-size: 1.375rem;
+    }
+  }
+
+  &_main {
+    background: url("../assets/Background-Form.jpg") no-repeat;
+    height: 55.19rem;
+
+    &_step {
+      font-size: 1.5rem;
+      font-weight: lighter;
+      margin: 2.25rem 0 4.375rem 8.88rem;
+      width: 6rem;
+      height: 1.87rem;
+    }
+
+    &_title {
+      font-size: 2.25rem;
+      font-weight: bold;
+      margin: 0 0 2.5rem 8.88rem;
+    }
+
+    &_step1 {
+      display: flex;
+      flex-direction: column;
+      margin-left: 8.88rem;
+
+      &_option {
+        display: flex;
+        align-items: center;
+      }
+
+      &_checkbox {
+        width: 2.5rem;
+        height: 2.5rem;
+        border: 1px solid black;
+        cursor: pointer;
+        margin-right: 1.875rem;
+        margin-bottom: 2.81rem;
+
+      }
+
+      &_text {
+        font-size: 1.375rem;
+        font-weight: lighter;
+        margin-bottom: 2.81rem;
+      }
+    }
+  }
+
+  &_buttons {
+    position: absolute;
+    margin: 0 0 3.125rem 8.875rem;
+    bottom: 0;
+    display: flex;
+    gap: 3.125rem;
+
+    &_single {
+      font-family: $font-base;
+      font-size: 1.5rem;
+      padding: 1.44rem 3.25rem;
+      font-weight: 300;
+      border: 0.75px solid $color-text-darker;
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0);
+    }
+  }
+}

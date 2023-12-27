@@ -2,8 +2,21 @@ import {useEffect, useState} from "react";
 import decoration from "../assets/Decoration.svg"
 
 export default function Inquiry() {
-    const [currentPage, setCurrentPage] = useState(2);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [checkboxStateStep1, setCheckboxStateStep1] = useState({
+        reusableClothes: false,
+        discardClothes: false,
+        toys: false,
+        books: false,
+        other: false,
+    });
 
+    const handleCheckboxChange = (name) => {
+        setCheckboxStateStep1((prev) => ({
+            ...prev,
+            [name]: !prev[name],
+        }));
+    };
     const handleNextPage = () => {
         setCurrentPage(currentPage + 1);
     };
@@ -16,34 +29,87 @@ export default function Inquiry() {
         switch (currentPage) {
             case 1:
                 return (
-                    <div>
-                        <div>
-                            <h2>Ważne!</h2>
-                            <p>Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy wiedzieć komu najlepiej
+                    <div className="container inquiry">
+                        <div className='inquiry_header'>
+                            <h2 className='inquiry_header_title'>Ważne!</h2>
+                            <p className='inquiry_header_text'>Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy wiedzieć komu najlepiej
                                 je przekazać.</p>
                         </div>
-                        <div>
-                            <span>Krok 1/4</span>
-                            <div>
-                                <p>Zaznacz co chcesz oddać:</p>
-                                <label htmlFor=""><input type="checkbox"/>ubrania, które nadają się do ponownego użycia</label>
-                                <label htmlFor=""><input type="checkbox"/>ubrania, do wyrzucenia</label>
-                                <label htmlFor=""><input type="checkbox"/>zabawki</label>
-                                <label htmlFor=""><input type="checkbox"/>książki</label>
-                                <label htmlFor=""><input type="checkbox"/>Inne</label>
+                        <div className='inquiry_main'>
+                            <div className='inquiry_main_step'>Krok 1/4</div>
+                            <h2 className='inquiry_main_title'>Zaznacz co chcesz oddać:</h2>
+                            <div className='inquiry_main_step1'>
+                                <div className='inquiry_main_step1_option'>
+                                    <div
+                                        onClick={() => handleCheckboxChange('reusableClothes')}
+                                        className='inquiry_main_step1_checkbox'
+                                        style={{
+                                            backgroundColor: checkboxStateStep1.reusableClothes ? '#FAD648' : 'transparent'
+                                        }}
+                                    ></div>
+                                    <span className='inquiry_main_step1_text'>ubrania, które nadają się do ponownego użycia</span>
+                                </div>
+
+                                <div className='inquiry_main_step1_option'>
+                                    <div
+                                        onClick={() => handleCheckboxChange('discardClothes')}
+                                        className='inquiry_main_step1_checkbox'
+                                        style={{
+                                            backgroundColor: checkboxStateStep1.discardClothes ? '#FAD648' : 'transparent'
+                                        }}
+                                    ></div>
+                                    <span className='inquiry_main_step1_text'>ubrania, do wyrzucenia</span>
+                                </div>
+
+                                <div className='inquiry_main_step1_option'>
+                                    <div
+                                        onClick={() => handleCheckboxChange('toys')}
+                                        className='inquiry_main_step1_checkbox'
+                                        style={{
+                                            backgroundColor: checkboxStateStep1.toys ? '#FAD648' : 'transparent'
+                                        }}
+                                    ></div>
+                                    <span className='inquiry_main_step1_text'>zabawki</span>
+                                </div>
+
+                                <div className='inquiry_main_step1_option'>
+                                    <div
+                                        onClick={() => handleCheckboxChange('books')}
+                                        className='inquiry_main_step1_checkbox'
+                                        style={{
+                                            backgroundColor: checkboxStateStep1.books ? '#FAD648' : 'transparent'
+                                        }}
+                                    ></div>
+                                    <span className='inquiry_main_step1_text'>książki</span>
+                                </div>
+
+                                <div className='inquiry_main_step1_option'>
+                                    <div
+                                        onClick={() => handleCheckboxChange('other')}
+                                        className='inquiry_main_step1_checkbox'
+                                        style={{
+                                            backgroundColor: checkboxStateStep1.other ? '#FAD648' : 'transparent'
+                                        }}
+                                    ></div>
+                                    <span className='inquiry_main_step1_text'>Inne</span>
+                                </div>
+
+                            </div>
+                            <div className='inquiry_buttons'>
+                                <button className='inquiry_buttons_single' onClick={handleNextPage}>Dalej</button>
                             </div>
                         </div>
                     </div>
                 );
             case 2:
                 return (
-                    <div>
-                        <div>
-                            <h2>Ważne!</h2>
-                            <p>Wszystkie rzeczy do oddania zapakuj w 60l worki. Dokładną instrukcję jak poprawnie
+                    <div className="container inquiry">
+                        <div className='inquiry_header'>
+                            <h2 className='inquiry_header_title'>Ważne!</h2>
+                            <p className='inquiry_header_text'>Wszystkie rzeczy do oddania zapakuj w 60l worki. Dokładną instrukcję jak poprawnie
                                 spakować rzeczy znajdziesz TUTAJ.</p>
                         </div>
-                        <div>
+                        <div className='inquiry_main'>
                             <span>Krok 2/4</span>
                             <div>
                                 <p>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</p>
@@ -58,20 +124,24 @@ export default function Inquiry() {
                                     </select>
                                 </div>
                             </div>
+                            <div className='inquiry_buttons'>
+                                <button className='inquiry_buttons_single' onClick={handlePrevPage}>Wstecz</button>
+                                <button className='inquiry_buttons_single' onClick={handleNextPage}>Dalej</button>
+                            </div>
                         </div>
                     </div>
                 );
             case 3:
                 return (
-                    <div>
-                        <div>
-                            <h2>Ważne!</h2>
-                            <p>Jeśli wiesz komu chcesz pomóc, możesz wpisać nazwę tej organizacji w wyszukiwarce. Możesz
+                    <div className="container inquiry">
+                        <div className='inquiry_header'>
+                            <h2 className='inquiry_header_title'>Ważne!</h2>
+                            <p className='inquiry_header_text'>Jeśli wiesz komu chcesz pomóc, możesz wpisać nazwę tej organizacji w wyszukiwarce. Możesz
                                 też filtrować organizacje po ich lokalizacji bądź celu ich pomocy.</p>
                         </div>
-                        <div>
+                        <div className='inquiry_main'>
                             <span>Krok 3/4</span>
-                            <div>
+                            <div >
                                 <p>Lokalizacja:</p>
                                 <select name="localization" id="localization">
                                     <option value="Poznań">Poznań</option>
@@ -91,19 +161,23 @@ export default function Inquiry() {
                                 <label htmlFor="">Wpisz nazwę konkretnej organizacji (opcjonalnie)</label>
                                 <input type="text"/>
                             </div>
+                            <div className='inquiry_buttons'>
+                                <button className='inquiry_buttons_single' onClick={handlePrevPage}>Wstecz</button>
+                                <button className='inquiry_buttons_single' onClick={handleNextPage}>Dalej</button>
+                            </div>
                         </div>
                     </div>
                 );
             case 4:
                 return (
-                    <div>
-                        <div>
-                            <h2>Ważne!</h2>
-                            <p>Podaj adres oraz termin odbioru rzeczy.</p>
+                    <div className="container inquiry">
+                        <div className='inquiry_header'>
+                            <h2 className='inquiry_header_title'>Ważne!</h2>
+                            <p className='inquiry_header_text'>Podaj adres oraz termin odbioru rzeczy.</p>
                         </div>
-                        <div>
+                        <div className='inquiry_main'>
                             <span>Krok 4/4</span>
-                            <div>
+                            <div >
                                 <p>Podaj adres oraz termin odbioru rzecz przez kuriera</p>
                                 <div>
                                     <div>
@@ -122,12 +196,16 @@ export default function Inquiry() {
                                     </div>
                                 </div>
                             </div>
+                            <div className='inquiry_buttons'>
+                                <button className='inquiry_buttons_single' onClick={handlePrevPage}>Wstecz</button>
+                                <button className='inquiry_buttons_single' onClick={handleNextPage}>Dalej</button>
+                            </div>
                         </div>
                     </div>
                 );
             case 5:
                 return (
-                    <div>
+                    <div className="container inquiry inquiry_main">
                         <h2>Podsumowanie Twojej darowizny</h2>
                         <div>
                             <p>Oddajesz:</p>
@@ -147,12 +225,16 @@ export default function Inquiry() {
                             <p>Godzina</p>
                             <p>Uwagi dla kuriera</p>
                         </div>
+                        <div className='inquiry_buttons'>
+                            <button className='inquiry_buttons_single' onClick={handlePrevPage}>Wstecz</button>
+                            <button className='inquiry_buttons_single'>Potwierdzam</button>
+                        </div>
                     </div>
                 );
             case 6:
                 return (
                     <>
-                        <div>
+                        <div className="container inquiry inquiry_main">
                             Dziękujemy za przesłanie formularza <br/> Na maila prześlemy wszelkie <br/> informacje o
                             odbiorze.
                         </div>
@@ -165,16 +247,6 @@ export default function Inquiry() {
     return (
         <>
             {renderPage()}
-            <div>
-                {currentPage > 1 && (
-                    <button onClick={handlePrevPage}>Wstecz</button>
-                )}
-                {currentPage < 5 ? (
-                    <button onClick={handleNextPage}>Dalej</button>
-                ) : (
-                    <button disabled={true}>Następna strona</button>
-                )}
-            </div>
         </>
     )
 }
