@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import decoration from "../assets/Decoration.svg"
+import arrowdown from "../assets/Icon-Arrow-Down.svg"
 
 export default function Inquiry() {
     const [currentPage, setCurrentPage] = useState(1);
@@ -10,7 +11,7 @@ export default function Inquiry() {
         books: false,
         other: false,
     });
-
+    const [selectedBags, setSelectedBags] = useState(1);
     const handleCheckboxChange = (name) => {
         setCheckboxStateStep1((prev) => ({
             ...prev,
@@ -32,7 +33,8 @@ export default function Inquiry() {
                     <div className="container inquiry">
                         <div className='inquiry_header'>
                             <h2 className='inquiry_header_title'>Ważne!</h2>
-                            <p className='inquiry_header_text'>Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy wiedzieć komu najlepiej
+                            <p className='inquiry_header_text'>Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu
+                                będziemy wiedzieć komu najlepiej
                                 je przekazać.</p>
                         </div>
                         <div className='inquiry_main'>
@@ -106,24 +108,34 @@ export default function Inquiry() {
                     <div className="container inquiry">
                         <div className='inquiry_header'>
                             <h2 className='inquiry_header_title'>Ważne!</h2>
-                            <p className='inquiry_header_text'>Wszystkie rzeczy do oddania zapakuj w 60l worki. Dokładną instrukcję jak poprawnie
+                            <p className='inquiry_header_text'>Wszystkie rzeczy do oddania zapakuj w 60l worki. Dokładną
+                                instrukcję jak poprawnie
                                 spakować rzeczy znajdziesz TUTAJ.</p>
                         </div>
                         <div className='inquiry_main'>
-                            <span>Krok 2/4</span>
-                            <div>
-                                <p>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</p>
+                            <div className='inquiry_main_step'>Krok 2/4</div>
+                            <h2 className='inquiry_main_title'>Podaj liczbę 60l worków, w które spakowałeś/aś
+                                rzeczy:</h2>
+                            <div className='inquiry_main_step2'>
+                                <p className='inquiry_main_step2_title'>Liczba 60l worków:</p>
                                 <div>
-                                    <p>Liczba 60l worków:</p>
-                                    <select name="bags" id="bags">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
+                                    <div className='inquiry_main_select'>
+                                        <p className='inquiry_main_select_placeholder'> — wybierz — </p>
+                                        <div><img src={arrowdown} alt='arrow up'/></div>
+                                    </div>
+                                    <ul className="inquiry_main_select_options">
+                                        {[1,2,3,4,5].map((option) => (
+                                            <li key={option} onClick={() =>  setSelectedBags(option)}>
+                                                {option}
+                                            </li>
+
+                                        ))}
+
+                                    </ul>
+
                                 </div>
                             </div>
+
                             <div className='inquiry_buttons'>
                                 <button className='inquiry_buttons_single' onClick={handlePrevPage}>Wstecz</button>
                                 <button className='inquiry_buttons_single' onClick={handleNextPage}>Dalej</button>
@@ -136,12 +148,13 @@ export default function Inquiry() {
                     <div className="container inquiry">
                         <div className='inquiry_header'>
                             <h2 className='inquiry_header_title'>Ważne!</h2>
-                            <p className='inquiry_header_text'>Jeśli wiesz komu chcesz pomóc, możesz wpisać nazwę tej organizacji w wyszukiwarce. Możesz
+                            <p className='inquiry_header_text'>Jeśli wiesz komu chcesz pomóc, możesz wpisać nazwę tej
+                                organizacji w wyszukiwarce. Możesz
                                 też filtrować organizacje po ich lokalizacji bądź celu ich pomocy.</p>
                         </div>
                         <div className='inquiry_main'>
                             <span>Krok 3/4</span>
-                            <div >
+                            <div>
                                 <p>Lokalizacja:</p>
                                 <select name="localization" id="localization">
                                     <option value="Poznań">Poznań</option>
@@ -177,7 +190,7 @@ export default function Inquiry() {
                         </div>
                         <div className='inquiry_main'>
                             <span>Krok 4/4</span>
-                            <div >
+                            <div>
                                 <p>Podaj adres oraz termin odbioru rzecz przez kuriera</p>
                                 <div>
                                     <div>

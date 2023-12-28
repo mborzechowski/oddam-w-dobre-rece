@@ -67,6 +67,43 @@
         margin-bottom: 2.81rem;
       }
     }
+
+    &_step2{
+      display: flex;
+      align-items: center;
+      margin-left: 8.88rem;
+
+      &_title {
+        font-size: 1.5rem;
+        margin-right: 1.625rem;
+        margin-top: 0.75rem;
+        align-self: start;
+      }
+    }
+
+    &_select{
+      width: 18.75rem;
+      height: 3.06rem;
+      border: 0.75px solid black;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &_placeholder{
+        font-size: 1.5rem;
+        margin-left: 1.2rem;
+
+      }
+
+      &_options{
+        border: 0.75px solid black;
+        width: 5.375rem;
+        height: 11.56rem;
+        margin-top: 1rem;
+        margin-left: 13.375rem;
+
+      }
+    }
   }
 
   &_buttons {
