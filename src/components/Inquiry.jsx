@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
-import decoration from "../assets/Decoration.svg"
-import arrowdown from "../assets/Icon-Arrow-Down.svg"
+import decoration from "../assets/Decoration.svg";
+import arrowDown from "../assets/Icon-Arrow-Down.svg";
+import arrowUp from '../assets/Icon-Arrow-Up.svg';
 
 export default function Inquiry() {
     const [currentPage, setCurrentPage] = useState(1);
@@ -11,7 +12,10 @@ export default function Inquiry() {
         books: false,
         other: false,
     });
-    const [selectedBags, setSelectedBags] = useState(1);
+    const [selectedBags, setSelectedBags] = useState(null);
+    const [optionsMenu, setOptionsMenu] = useState(false);
+    const [selectedCity, setSelectedCity] = useState(null);
+    const cities = ['Poznań', 'Warszawa', 'Kraków', 'Wrocław', 'Katowice' ]
     const handleCheckboxChange = (name) => {
         setCheckboxStateStep1((prev) => ({
             ...prev,
@@ -20,11 +24,27 @@ export default function Inquiry() {
     };
     const handleNextPage = () => {
         setCurrentPage(currentPage + 1);
+        setOptionsMenu(false);
     };
 
     const handlePrevPage = () => {
         setCurrentPage(currentPage - 1);
+        setOptionsMenu(false);
     };
+
+    const toggleOptions = () => {
+        setOptionsMenu(!optionsMenu)
+    }
+
+    const selectBags = (bag) => {
+        setSelectedBags(bag)
+        setOptionsMenu(!optionsMenu)
+    }
+
+    const selectCity = (city) =>{
+        setOptionsMenu(!optionsMenu)
+        setSelectedCity(city)
+    }
 
     const renderPage = () => {
         switch (currentPage) {
@@ -119,13 +139,13 @@ export default function Inquiry() {
                             <div className='inquiry_main_step2'>
                                 <p className='inquiry_main_step2_title'>Liczba 60l worków:</p>
                                 <div>
-                                    <div className='inquiry_main_select'>
-                                        <p className='inquiry_main_select_placeholder'> — wybierz — </p>
-                                        <div><img src={arrowdown} alt='arrow up'/></div>
+                                    <div className='inquiry_main_select' onClick={toggleOptions} style={{cursor:"pointer"}}>
+                                        <p className='inquiry_main_select_placeholder'> {selectedBags ? selectedBags : ' — wybierz — '} </p>
+                                        <div><img src={optionsMenu ? arrowUp : arrowDown} alt='arrow up' /></div>
                                     </div>
-                                    <ul className="inquiry_main_select_options">
+                                    <ul className={`inquiry_main_select_options ${optionsMenu === false ? 'hidden' : '' } `}>
                                         {[1,2,3,4,5].map((option) => (
-                                            <li key={option} onClick={() =>  setSelectedBags(option)}>
+                                            <li key={option} onClick={() => selectBags(option)} className='inquiry_main_select_single_option'>
                                                 {option}
                                             </li>
 
@@ -153,16 +173,23 @@ export default function Inquiry() {
                                 też filtrować organizacje po ich lokalizacji bądź celu ich pomocy.</p>
                         </div>
                         <div className='inquiry_main'>
-                            <span>Krok 3/4</span>
+                            <div className='inquiry_main_step'>Krok 3/4</div>
                             <div>
-                                <p>Lokalizacja:</p>
-                                <select name="localization" id="localization">
-                                    <option value="Poznań">Poznań</option>
-                                    <option value="Warszawa">Warszawa</option>
-                                    <option value="Kraków">Kraków</option>
-                                    <option value="Wrocław">Wrocław</option>
-                                    <option value="Katowice">Katowice</option>
-                                </select>
+                                <p className='inquiry_main_title'>Lokalizacja:</p>
+                                <div className='inquiry_main_select' onClick={toggleOptions} style={{cursor:"pointer"}}>
+                                    <p className='inquiry_main_select_placeholder'> {selectedCity ? selectedCity : ' — wybierz — '} </p>
+                                    <div><img src={optionsMenu ? arrowUp : arrowDown} alt='arrow up' /></div>
+                                </div>
+                                <ul className={`inquiry_main_select_cities ${optionsMenu === false ? 'hidden' : '' } `}>
+                                    {cities.map((city) => (
+                                        <li key={city} onClick={() => selectCity(city)} className='inquiry_main_select_single_city'>
+                                            {city}
+                                        </li>
+
+                                    ))}
+
+                                </ul>
+
                                 <p>Komu chcesz pomóc?</p>
                                 <div>
                                     <div>dzieciom</div>

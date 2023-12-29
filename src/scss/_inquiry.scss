@@ -68,7 +68,7 @@
       }
     }
 
-    &_step2{
+    &_step2 {
       display: flex;
       align-items: center;
       margin-left: 8.88rem;
@@ -81,7 +81,7 @@
       }
     }
 
-    &_select{
+    &_select {
       width: 18.75rem;
       height: 3.06rem;
       border: 0.75px solid black;
@@ -89,19 +89,53 @@
       align-items: center;
       justify-content: space-between;
 
-      &_placeholder{
+      &_placeholder {
         font-size: 1.5rem;
         margin-left: 1.2rem;
 
       }
 
-      &_options{
+      &_options {
         border: 0.75px solid black;
-        width: 5.375rem;
-        height: 11.56rem;
+        width: 5.4rem;
+        height: 11.75rem;
         margin-top: 1rem;
         margin-left: 13.375rem;
 
+      }
+
+      &_cities{
+        border: 0.75px solid black;
+        width: 18.75rem;
+        height: 11.85rem;
+        margin-top: 1rem;
+      }
+
+      &_single_option {
+        width: 5.25rem;
+        height: 2.312rem;
+        font-size: 1.5rem;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #FAD648;
+        }
+      }
+
+      &_single_city{
+        font-size: 1.5rem;
+        align-items: center;
+        justify-content: start;
+        display: flex;
+        cursor: pointer;
+        height: 2.35rem;
+        padding-left: 1rem;
+        &:hover {
+          background-color: #FAD648;
+        }
       }
     }
   }
@@ -123,4 +157,8 @@
       background-color: rgba(0, 0, 0, 0);
     }
   }
+}
+
+.hidden {
+  display: none;
 }
