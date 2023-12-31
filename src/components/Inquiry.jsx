@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import decoration from "../assets/Decoration.svg";
 import arrowDown from "../assets/Icon-Arrow-Down.svg";
 import arrowUp from '../assets/Icon-Arrow-Up.svg';
@@ -15,7 +15,15 @@ export default function Inquiry() {
     const [selectedBags, setSelectedBags] = useState(null);
     const [optionsMenu, setOptionsMenu] = useState(false);
     const [selectedCity, setSelectedCity] = useState(null);
-    const cities = ['Poznań', 'Warszawa', 'Kraków', 'Wrocław', 'Katowice' ]
+    const cities = ['Poznań', 'Warszawa', 'Kraków', 'Wrocław', 'Katowice' ];
+    const [whomToHelp, setWhomToHelp] = useState({
+        kids: false,
+        singleMothers: false,
+        homeless: false,
+        disabled: false,
+        older: false
+    });
+    const [organisationToHelp, setOrganisationToHelp] = useState('');
     const handleCheckboxChange = (name) => {
         setCheckboxStateStep1((prev) => ({
             ...prev,
@@ -44,6 +52,16 @@ export default function Inquiry() {
     const selectCity = (city) =>{
         setOptionsMenu(!optionsMenu)
         setSelectedCity(city)
+    }
+
+    const handleWhomToHelp = (name) =>{
+        setWhomToHelp( prevState => ({
+            [name]: !prevState[name],
+        }));
+    }
+
+    const handleSetOrganisation = (e) =>{
+        setOrganisationToHelp(e.target.value)
     }
 
     const renderPage = () => {
@@ -174,13 +192,13 @@ export default function Inquiry() {
                         </div>
                         <div className='inquiry_main'>
                             <div className='inquiry_main_step'>Krok 3/4</div>
-                            <div>
-                                <p className='inquiry_main_title'>Lokalizacja:</p>
-                                <div className='inquiry_main_select' onClick={toggleOptions} style={{cursor:"pointer"}}>
+                            <div className='inquiry_main_step3'>
+                                <p className='inquiry_main_step3_title'>Lokalizacja:</p>
+                                <div className='inquiry_main_step3_select' onClick={toggleOptions}>
                                     <p className='inquiry_main_select_placeholder'> {selectedCity ? selectedCity : ' — wybierz — '} </p>
                                     <div><img src={optionsMenu ? arrowUp : arrowDown} alt='arrow up' /></div>
                                 </div>
-                                <ul className={`inquiry_main_select_cities ${optionsMenu === false ? 'hidden' : '' } `}>
+                                <ul  className={`inquiry_main_select_cities ${optionsMenu === false ? 'hidden' : '' }`}>
                                     {cities.map((city) => (
                                         <li key={city} onClick={() => selectCity(city)} className='inquiry_main_select_single_city'>
                                             {city}
@@ -190,16 +208,37 @@ export default function Inquiry() {
 
                                 </ul>
 
-                                <p>Komu chcesz pomóc?</p>
-                                <div>
-                                    <div>dzieciom</div>
-                                    <div>samotnym matkom</div>
-                                    <div>bezdomnym</div>
-                                    <div>niepełnosprawnym</div>
-                                    <div>osobom starszym</div>
+                                <p className='inquiry_main_step3_subtitle'>Komu chcesz pomóc?</p>
+                                <div className='inquiry_main_step3_whom'>
+                                    <div
+                                        className='inquiry_main_step3_option'
+                                        onClick={() => handleWhomToHelp('kids')}
+                                    style={{backgroundColor: whomToHelp.kids ? '#FAD648' : 'transparent'}}>dzieciom</div>
+                                    <div
+                                        className='inquiry_main_step3_option'
+                                        onClick={() => handleWhomToHelp('singleMothers')}
+                                        style={{backgroundColor: whomToHelp.singleMothers ? '#FAD648' : 'transparent'}}>samotnym matkom</div>
+                                    <div
+                                        className='inquiry_main_step3_option'
+                                        onClick={() => handleWhomToHelp('homeless')}
+                                        style={{backgroundColor: whomToHelp.homeless ? '#FAD648' : 'transparent'}}>bezdomnym</div>
+                                    <div
+                                        className='inquiry_main_step3_option'
+                                        onClick={() => handleWhomToHelp('disabled')}
+                                        style={{backgroundColor: whomToHelp.disabled ? '#FAD648' : 'transparent'}}>niepełnosprawnym</div>
+                                    <div
+                                        className='inquiry_main_step3_option'
+                                        onClick={() => handleWhomToHelp('older')}
+                                        style={{backgroundColor: whomToHelp.older ? '#FAD648' : 'transparent'}}>osobom starszym</div>
                                 </div>
-                                <label htmlFor="">Wpisz nazwę konkretnej organizacji (opcjonalnie)</label>
-                                <input type="text"/>
+                                <div className='inquiry_main_step3_organisation'>
+                                <label htmlFor="" className='inquiry_main_step3_label'>Wpisz nazwę konkretnej organizacji (opcjonalnie)</label>
+                                <input
+                                    type="text"
+                                    className='inquiry_main_step3_input'
+                                    value={organisationToHelp}
+                                    onChange={handleSetOrganisation}/>
+                                </div>
                             </div>
                             <div className='inquiry_buttons'>
                                 <button className='inquiry_buttons_single' onClick={handlePrevPage}>Wstecz</button>
@@ -216,9 +255,9 @@ export default function Inquiry() {
                             <p className='inquiry_header_text'>Podaj adres oraz termin odbioru rzeczy.</p>
                         </div>
                         <div className='inquiry_main'>
-                            <span>Krok 4/4</span>
+                            <div className='inquiry_main_step'>Krok 4/4</div>
                             <div>
-                                <p>Podaj adres oraz termin odbioru rzecz przez kuriera</p>
+                                <p className='inquiry_main_title'>Podaj adres oraz termin odbioru rzecz przez kuriera</p>
                                 <div>
                                     <div>
                                         <p>Adres odbioru:</p>
